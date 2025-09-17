@@ -1,27 +1,51 @@
-import os, sys
+import os
 import FreeCAD as App
 import FreeCADGui as Gui
 
-user_data = App.getUserAppDataDir()  # e.g., ~/Library/Application Support/FreeCAD/
-mod_dir = os.path.join(user_data, "Mod", "CycleOrbitingModes")
-if mod_dir not in sys.path:
-    sys.path.insert(0, mod_dir)
 
-mod_icon_path = os.path.join(mod_dir, "Resources", "icons")
-Gui.addIconPath(mod_icon_path)
+class OrbitingModesWorkbench(Gui.PythonWorkbench):
+    #  Icon in XPM 16x16
+    Icon = os.path.dirname(__file__) + "/Resources/icons/OrbitingModes_Orbit.svg"
+    MenuText = "OrbitingModes"
+    ToolTip = "Change Orbiting Modes easily"
+
+    def GetClassName(self):
+        return super().GetClassName()
+
+    def Initialize(self):
+        # Do not add toolbar or menu
+        pass
+
+    def Activated(self):
+        """Hide the workbench tab."""
+        mw = Gui.getMainWindow()
+        dock = mw.findChild("QDockWidget", "OrbitingModesDockWidget")
+        if dock:
+            dock.hide()
+        App.Console.PrintMessage("OrbitingModes workbench activated (tab hidden)")
+        return super().Activated()  # TODO: remove?
+
+    def Deactivated(self):
+        pass
+
+    def ContextMenu(self, recipient):
+        pass
+
+    def GetPreferencesPages(self) -> None:
+        return None
 
 
 class _CycleOrbitingModesCmd:
     def GetResources(self):
         return {
-            "Pixmap": "CycleOrbitingModes_Orbit",
+            "Pixmap": "OrbitingModes_Orbit",
             "MenuText": "CycleOrbitingModes",
             "ToolTip": "Cycle orbiting style between Turntable+Center, Trackball+Cursor, and others",
         }
 
     def Activated(self):
         App.Console.PrintMessage("running the shortcut")
-        from cycle_orbiting_modes import toggle_orbiting
+        from orbiting_modes import toggle_orbiting
 
         toggle_orbiting()
 
@@ -29,5 +53,6 @@ class _CycleOrbitingModesCmd:
         return True
 
 
-Gui.addCommand("CycleOrbiting", _CycleOrbitingModesCmd())
-App.Console.PrintMessage("CycleOrbiting command added")
+Gui.addWorkbench(OrbitingModesWorkbench)
+Gui.addCommand("CycleOrbitingModes", _CycleOrbitingModesCmd())
+App.Console.PrintMessage("CycleOrbitingModes command added")
