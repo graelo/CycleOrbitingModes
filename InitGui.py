@@ -3,56 +3,59 @@ import FreeCAD as App
 import FreeCADGui as Gui
 
 
-class OrbitingModesWorkbench(Gui.PythonWorkbench):
-    #  Icon in XPM 16x16
-    Icon = os.path.dirname(__file__) + "/Resources/icons/OrbitingModes_Orbit.svg"
-    MenuText = "OrbitingModes"
-    ToolTip = "Change Orbiting Modes easily"
-
-    def GetClassName(self):
-        return super().GetClassName()
-
-    def Initialize(self):
-        # Do not add toolbar or menu
-        pass
-
-    def Activated(self):
-        """Hide the workbench tab."""
-        mw = Gui.getMainWindow()
-        dock = mw.findChild("QDockWidget", "OrbitingModesDockWidget")
-        if dock:
-            dock.hide()
-        App.Console.PrintMessage("OrbitingModes workbench activated (tab hidden)")
-        return super().Activated()  # TODO: remove?
-
-    def Deactivated(self):
-        pass
-
-    def ContextMenu(self, recipient):
-        pass
-
-    def GetPreferencesPages(self) -> None:
-        return None
-
-
 class _CycleOrbitingModesCmd:
     def GetResources(self):
+        # XPM icon data (16x16 pixels)
+        """
+        /* XPM */
+        static char * CycleOrbitingModes_Orbit_xpm[] = {
+        "16 16 2 1",
+        " 	c None",
+        ".	c #000000",
+        "                ",
+        "      ....      ",
+        "    ..    ..    ",
+        "   .        .   ",
+        "  .    ..    .  ",
+        " .    .  .    . ",
+        " .   .    .   . ",
+        ".   .  ..  .   .",
+        ".   .  ..  .   .",
+        " .   .    .   . ",
+        " .    .  .    . ",
+        "  .    ..    .  ",
+        "   .        .   ",
+        "    ..    ..    ",
+        "      ....      ",
+        "                "};
+        """
+
         return {
-            "Pixmap": "OrbitingModes_Orbit",
+            "Pixmap": os.path.join(
+                App.getUserAppDataDir(),
+                "Mod",
+                "CycleOrbitingModes",
+                "Resources",
+                "icons",
+                "CycleOrbitingModes_Orbit.svg",
+            ),
             "MenuText": "CycleOrbitingModes",
             "ToolTip": "Cycle orbiting style between Turntable+Center, Trackball+Cursor, and others",
+            "Accel": "Ctrl+Shift+J",
         }
 
     def Activated(self):
-        App.Console.PrintMessage("running the shortcut")
-        from orbiting_modes import toggle_orbiting
+        App.Console.PrintMessage("running the shortcut\n")
+        try:
+            from orbiting_modes import toggle_orbiting
 
-        toggle_orbiting()
+            toggle_orbiting()
+        except Exception as e:
+            App.Console.PrintError(f"Error in toggle_orbiting: {e}\n")
 
     def IsActive(self):
         return True
 
 
-Gui.addWorkbench(OrbitingModesWorkbench)
+# Register the command globally (not tied to any specific workbench)
 Gui.addCommand("CycleOrbitingModes", _CycleOrbitingModesCmd())
-App.Console.PrintMessage("CycleOrbitingModes command added")
