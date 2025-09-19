@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+
+  <name>CycleOrbitingModes</name>
+
+  <description>Easily cycle between different navigation/orbiting modes in FreeCAD with a keyboard shortcut</description>
+
+  <version>1.0.0</version>
+
+  <date>2025-09-20</date>
+
+  <maintainer email="graelo@graelo.cc">graelo</maintainer>
+
+  <license file="LICENSE">MIT</license>
+
+  <url type="website">https://github.com/yourusername/CycleOrbitingModes</url>
+  <url type="repository">https://github.com/yourusername/CycleOrbitingModes.git</url>
+  <url type="bugtracker">https://github.com/yourusername/CycleOrbitingModes/issues</url>
+
+  <author email="graelo@graelo.cc">graelo</author>
+
+  <freecad_min>0.19</freecad_min>
+
+  <content>
+    <workbench>
+      <classname>CycleOrbitingModes</classname>
+      <subdirectory>./</subdirectory>
+    </workbench>
+  </content>
+
+  <tag>navigation</tag>
+  <tag>orbiting</tag>
+  <tag>keyboard</tag>
+  <tag>shortcut</tag>
+
+</package>
