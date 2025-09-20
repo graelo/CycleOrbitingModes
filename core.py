@@ -1,5 +1,7 @@
 import FreeCAD as App
 
+from OrbitingModes.utils import Log
+
 
 def toggle_orbiting():
     """Toggle between (Turntable + Window center) and (Trackball + Drag at cursor)."""
@@ -29,8 +31,4 @@ def toggle_orbiting():
 
     # Notify the user
     state_name = "Trackball+Drag at cursor" if new_orbit else "Turntable+Window center"
-    App.Console.PrintMessage(f"Navigation toggled to: {state_name}\n")
-
-
-# Run the toggle when the macro is executed
-# toggle_orbiting()
+    Log.info(f"Navigation toggled to: {state_name}\n")

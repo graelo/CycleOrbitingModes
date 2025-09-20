@@ -1,6 +1,7 @@
-# CycleOrbitingModes
+# OrbitingModes for FreeCAD
 
-A FreeCAD add-on that allows you to easily cycle between different navigation/orbiting modes using a keyboard shortcut.
+A FreeCAD add-on that allows you to easily cycle between different
+navigation/orbiting modes using a keyboard shortcut.
 
 ## Features
 
@@ -15,7 +16,7 @@ A FreeCAD add-on that allows you to easily cycle between different navigation/or
 
 1. Open FreeCAD
 2. Go to **Tools → Addon Manager**
-3. Search for "CycleOrbitingModes"
+3. Search for "OrbitingModes"
 4. Click **Install**
 5. Restart FreeCAD
 
@@ -52,4 +53,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-Issues and pull requests are welcome! Please visit the [GitHub repository](https://github.com/yourusername/CycleOrbitingModes).
+Issues and pull requests are welcome! Please visit the [GitHub repository](https://github.com/graelo/OrbitingModes).
+

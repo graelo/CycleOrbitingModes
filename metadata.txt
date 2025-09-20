@@ -1,9 +1,9 @@
 [general]
-name = CycleOrbitingModes
+name = OrbitingModes
 description = Easily cycle between different navigation/orbiting modes in FreeCAD
 maintainer = graelo <graelo@graelo.cc>
 version = 1.0.0
-wiki = https://github.com/graelo/CycleOrbitingModes
-web = https://github.com/graelo/CycleOrbitingModes
-tracker = https://github.com/graelo/CycleOrbitingModes/issues
-icon = Resources/icons/CycleOrbitingModes_Orbit.svg
+wiki = https://github.com/graelo/OrbitingModes
+web = https://github.com/graelo/OrbitingModes
+tracker = https://github.com/graelo/OrbitingModes/issues
+icon = Resources/icons/OrbitingModes_Logo.svg
