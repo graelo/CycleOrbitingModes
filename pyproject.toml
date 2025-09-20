@@ -1,2 +1,10 @@
+[project]
+name = "OrbitingModes"
+version = "0.0.1"
+description = "Easily cycle between different navigation/orbiting modes in FreeCAD with a keyboard shortcut."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = ["freecad-stubs>=1.0.21"]
+
 [tool.ruff]
 line-length = 100
